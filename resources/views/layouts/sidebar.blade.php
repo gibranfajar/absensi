@@ -14,8 +14,8 @@
                         <span class="count bg-success"></span>
                     </div>
                     <div class="profile-name">
-                        {{-- <h5 class="mb-0 font-weight-normal">{{ Auth::user()->name }}</h5> --}}
-                        {{-- <span>{{ Auth::user()->jabatan }}</span> --}}
+                        <h5 class="mb-0 font-weight-normal">{{ Auth::user()->name }}</h5>
+                        <span>{{ Auth::user()->jabatan }}</span>
                     </div>
                 </div>
             </div>
@@ -33,7 +33,7 @@
             </a>
         </li>
 
-        {{-- @if (Auth::user()->jabatan == 'admin') --}}
+        @if (Auth::user()->jabatan == 'admin')
         <li class="nav-item menu-items">
             <a class="nav-link" data-toggle="collapse" href="#guru">
                 <span class="menu-icon">
@@ -49,7 +49,7 @@
                 </ul>
             </div>
         </li>
-        {{-- @endif --}}
+        @endif
 
         <li class="nav-item menu-items">
             <a class="nav-link" data-toggle="collapse" href="#siswa">
@@ -76,7 +76,7 @@
             </a>
         </li>
 
-        {{-- @if (Auth::user()->jabatan == 'admin') --}}
+        @if (Auth::user()->jabatan == 'admin')
         <li class="nav-item menu-items">
             <a class="nav-link" href="/kelas">
                 <span class="menu-icon">
@@ -94,7 +94,7 @@
                 <span class="menu-title">Jurusan</span>
             </a>
         </li>
-        {{-- @endif --}}
+        @endif
 
         <li class="nav-item menu-items">
             <a class="nav-link" href="/absensi">
@@ -102,6 +102,15 @@
                     <i class="mdi mdi-table-large"></i>
                 </span>
                 <span class="menu-title">Absensi</span>
+            </a>
+        </li>
+
+        <li class="nav-item menu-items">
+            <a class="nav-link" href="/data-absen">
+                <span class="menu-icon">
+                    <i class="mdi mdi-table-large"></i>
+                </span>
+                <span class="menu-title">Data Absen</span>
             </a>
         </li>
     </ul>

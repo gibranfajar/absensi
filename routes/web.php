@@ -25,7 +25,7 @@ Route::get('/', [Authenticate::class, 'index'])->name('login');
 Route::post('/login', [Authenticate::class, 'login']);
 
 // dashboard
-Route::get('/dashboard', [Authenticate::class, 'dashboard']);
+Route::get('/dashboard', [Authenticate::class, 'dashboard'])->middleware('auth');
 
 // guru
 Route::get('/guru/tambah', [GuruController::class, 'index'])->name('tambahguru');
@@ -34,8 +34,6 @@ Route::get('/guru/data', [GuruController::class, 'data'])->name('dataguru');
 Route::post('/guru/tambah', [GuruController::class, 'insert']);
 Route::post('/guru/update', [GuruController::class, 'update']);
 Route::get('/guru/hapus/{id}', [GuruController::class, 'delete']);
-
-
 
 // siswa
 Route::get('/siswa/tambah', [SiswaController::class, 'index'])->name('siswa');
@@ -67,6 +65,12 @@ Route::get('/jurusan/hapus/{id}', [JurusanController::class, 'delete']);
 
 // absensi
 Route::get('/absensi', [AbsensiController::class, 'index']);
+Route::get('/data-absen', [AbsensiController::class, 'absen']);
+Route::get('/data-absen/data/search/{id}', [AbsensiController::class, 'dataabsen']);
+Route::get('/absensi/data/search/{id}', [AbsensiController::class, 'datakelas'])->name('dataabsen');
+Route::get('/absensi/data/absen/alfa/{id}', [AbsensiController::class, 'absenalfa']);
+Route::get('/absensi/data/absen/izin/{id}', [AbsensiController::class, 'absenizin']);
+Route::get('/absensi/data/absen/hadir/{id}', [AbsensiController::class, 'absenhadir']);
 
 // logout
 Route::get('/logout', [Authenticate::class, 'logout']);

@@ -97,7 +97,7 @@ class SiswaController extends Controller
         } else {
 
             DB::table('siswas')
-                ->where('id_siswa', $request->id_siswa)
+                ->where('id', $request->id)
                 ->update([
                     'nis' => $request->nis,
                     'name' => $request->name,
@@ -107,7 +107,15 @@ class SiswaController extends Controller
                     'updated_at' => now()
                 ]);
 
-            return redirect()->route('siswa')->with('message', 'Data Berhasil Diupdate!');
+            return redirect()->route('dataSiswa')->with('message', 'Data Berhasil Diupdate!');
         }
+    }
+
+    public function delete($id)
+    {
+        DB::table('siswas')
+            ->where('id', $id)
+            ->delete();
+        return redirect()->route('dataSiswa')->with('message', 'Data Berhasil Dihapus!');
     }
 }

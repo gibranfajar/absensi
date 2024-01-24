@@ -52,7 +52,7 @@ class MapelController extends Controller
     public function edit($id)
     {
         $mapelEdit = DB::table('mapels')
-            ->where('mapels.id_mapel', $id)
+            ->where('mapels.id', $id)
             ->join('users', 'mapels.user_id', '=', 'users.id')
             ->get();
         $dataGuru = DB::table('users')
@@ -75,7 +75,7 @@ class MapelController extends Controller
         $validator = Validator::make($request->all(), [
             'kode_mapel'    => [
                 'required',
-                Rule::unique('mapels')->ignore($request->id_mapel),
+                Rule::unique('mapels')->ignore($request->id),
             ],
             'nama_mapel'    => 'required',
             'guru'          => 'required'
@@ -85,7 +85,7 @@ class MapelController extends Controller
             return redirect()->route('mapelEdit', ['id' => $request->id])->withErrors($validator);
         } else {
             DB::table('mapels')
-                ->where('id_mapel', $request->id)
+                ->where('id', $request->id)
                 ->update([
                     'kode_mapel' => $request->kode_mapel,
                     'nama_mapel' => $request->nama_mapel,
@@ -100,7 +100,7 @@ class MapelController extends Controller
     public function delete($id)
     {
         DB::table('mapels')
-            ->where('id_kelas', $id)
+            ->where('id', $id)
             ->delete();
         return redirect()->route('mapel')->with('message', 'Data Berhasil Dihapus!');
     }

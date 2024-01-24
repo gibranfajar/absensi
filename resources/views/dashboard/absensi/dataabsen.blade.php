@@ -42,20 +42,10 @@
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                @foreach ($dataSiswa as $siswa)     
+                                            <tbody>    
                                                     <tr>
-                                                        <td>{{$loop->iteration}}</td>
-                                                        <td>{{$siswa->name}}</td>
-                                                        <td>{{$siswa->kelas}}</td>
-                                                        <td>{{$siswa->nama_jurusan}}</td>
-                                                        <td>
-                                                            <a href="/absensi/data/absen/alfa/{{$siswa->id}}" class="badge badge-danger">ALFA</a>
-                                                            <a href="/absensi/data/absen/izin/{{$siswa->id}}" class="badge badge-warning">IZIN</a>
-                                                            <a href="/absensi/data/absen/hadir/{{$siswa->id}}" class="badge badge-success">HADIR</a>
-                                                        </td>
+                                                        <td colspan="5" class="text-center">Data Notfound</td>
                                                     </tr>
-                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>

@@ -8,12 +8,9 @@
             <!-- partial:partials/_navbar.html -->
             @include('layouts.navbar')
             <!-- partial -->
-
-
-
             <div class="main-panel">
                 <div class="content-wrapper">
-                    {{-- @if (auth::user()->role == 'admin') --}}
+                    @if (Auth::user()->jabatan == 'admin')
                     <div class="row">
                         <div class="col-xl-4 col-sm-6 grid-margin">
                             <div class="card">
@@ -57,14 +54,14 @@
                                             </div>
                                         </div>
                                         <div class="col-9">
-                                            <h3>Siswa : 2000</h3>
+                                            <h3>Siswa : {{$siswa}}</h3>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    {{-- @endif --}}
+                    @endif
                 </div>
                 @include('layouts.footer')
             </div>

@@ -72,22 +72,34 @@ class GuruController extends Controller
                 'required',
                 Rule::unique('users')->ignore($request->id),
             ],
-            'jabatan'      => 'required',
-            'password'  => 'required|min:5'
+            'jabatan' => 'required',
+            'password' => ''
         ]);
 
         if ($validator->fails()) {
             return redirect()->route('editguru', ['id' => $request->id])->withErrors($validator);
         } else {
-            DB::table('users')->where('id', $request->id)->update([
-                'name' => $request->name,
-                'username' => $request->username,
-                'jabatan' => $request->jabatan,
-                'password' => Hash::make($request->password),
-                'updated_at' => now()
-            ]);
 
-            return redirect()->route('dataguru')->with('message', 'Data Berhasil Diupdate!');
+            if ($validator->fails('password')) {
+                DB::table('users')->where('id', $request->id)->update([
+                    'name' => $request->name,
+                    'username' => $request->username,
+                    'jabatan' => $request->jabatan,
+                    'updated_at' => now()
+                ]);
+
+                return redirect()->route('dataguru')->with('message', 'Data Berhasil Diupdate!');
+            } else {
+                DB::table('users')->where('id', $request->id)->update([
+                    'name' => $request->name,
+                    'username' => $request->username,
+                    'jabatan' => $request->jabatan,
+                    'password' => Hash::make($request->password),
+                    'updated_at' => now()
+                ]);
+
+                return redirect()->route('dataguru')->with('message', 'Data Berhasil Diupdate!');
+            }
         }
     }
 

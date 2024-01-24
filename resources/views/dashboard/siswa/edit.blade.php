@@ -20,7 +20,7 @@
                                     @foreach ($dataSiswa as $dasis)
                                         <form class="forms-sample" action="/siswa/update" method="POST">
                                             @csrf
-                                            <input type="hidden" name="id" value="{{ $dasis->id_siswa }}">
+                                            <input type="hidden" name="id" value="{{ $dasis->id }}">
                                             <div class="form-group">
                                                 <label>NIS</label>
                                                 <input type="text" class="form-control" name="nis" placeholder="NIS"
